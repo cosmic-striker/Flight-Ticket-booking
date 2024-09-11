@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-gray-900 p-4 text-white">
+        <div class="container mx-auto">
+            <h1 class="text-2xl">Admin Dashboard</h1>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-10">
+        <h2 class="text-2xl mb-4">Manage Flights</h2>
+
+        <!-- Add Flight Form -->
+        <div class="bg-white p-6 rounded shadow-md mb-6">
+            <h3 class="text-xl mb-4">Add a New Flight</h3>
+            <form action="/add_flight" method="POST">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="flight_id" class="block text-gray-700">Flight ID</label>
+                        <input type="text" name="flight_id" id="flight_id" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                    <div>
+                        <label for="origin" class="block text-gray-700">Origin</label>
+                        <input type="text" name="origin" id="origin" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                    <div>
+                        <label for="destination" class="block text-gray-700">Destination</label>
+                        <input type="text" name="destination" id="destination" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                    <div>
+                        <label for="date" class="block text-gray-700">Date</label>
+                        <input type="date" name="date" id="date" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                    <div>
+                        <label for="time" class="block text-gray-700">Time</label>
+                        <input type="time" name="time" id="time" class="w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                </div>
+                <button type="submit" class="mt-4 bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600">Add Flight</button>
+            </form>
+        </div>
+
+        <!-- Flights List -->
+        <h3 class="text-xl mb-4">Existing Flights</h3>
+        <table class="w-full bg-white rounded shadow-md">
+            <thead>
+                <tr>
+                    <th class="border p-2">Flight ID</th>
+                    <th class="border p-2">Origin</th>
+                    <th class="border p-2">Destination</th>
+                    <th class="border p-2">Date</th>
+                    <th class="border p-2">Time</th>
+                    <th class="border p-2">Seats</th>
+                    <th class="border p-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td class="border p-2">{{ flight.flight_id }}</td>
+                    <td class="border p-2">{{ flight.origin }}</td>
+                    <td class="border p-2">{{ flight.destination }}</td>
+                    <td class="border p-2">{{ flight.date }}</td>
+                    <td class="border p-2">{{ flight.time }}</td>
+                    <td class="border p-2">{{ flight.seats }}</td>
+                    <td class="border p-2">
+                        <a href="/remove_flight/{{ flight.flight_id }}" class="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600">Remove</a>
+                        <a href="/view_bookings/{{ flight.flight_id }}" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-600">View Bookings</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
