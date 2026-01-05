@@ -1,0 +1,400 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "getpass",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "getpass",
+        "description": "getpass",
+        "detail": "getpass",
+        "documentation": {}
+    },
+    {
+        "label": "read_csv",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def read_csv(file_path):\n    with open(file_path, 'r') as file:\n        return list(csv.DictReader(file))\ndef write_csv(file_path, data, fieldnames):\n    with open(file_path, 'a', newline='') as file:\n        writer = csv.DictWriter(file, fieldnames=fieldnames)\n        writer.writerow(data)\ndef save_flight_data(flight_data):\n    fieldnames = ['flight_id', 'origin', 'destination', 'date', 'time', 'seats']\n    write_csv(FLIGHT_CSV, flight_data, fieldnames)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "write_csv",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def write_csv(file_path, data, fieldnames):\n    with open(file_path, 'a', newline='') as file:\n        writer = csv.DictWriter(file, fieldnames=fieldnames)\n        writer.writerow(data)\ndef save_flight_data(flight_data):\n    fieldnames = ['flight_id', 'origin', 'destination', 'date', 'time', 'seats']\n    write_csv(FLIGHT_CSV, flight_data, fieldnames)\ndef save_user_data(user_data):\n    fieldnames = ['username', 'password', 'role']\n    write_csv(USER_CSV, user_data, fieldnames)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "save_flight_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def save_flight_data(flight_data):\n    fieldnames = ['flight_id', 'origin', 'destination', 'date', 'time', 'seats']\n    write_csv(FLIGHT_CSV, flight_data, fieldnames)\ndef save_user_data(user_data):\n    fieldnames = ['username', 'password', 'role']\n    write_csv(USER_CSV, user_data, fieldnames)\ndef save_booking_data(booking_data):\n    fieldnames = ['username', 'flight_id', 'date', 'time']\n    write_csv(BOOKINGS_CSV, booking_data, fieldnames)\n# Routes",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "save_user_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def save_user_data(user_data):\n    fieldnames = ['username', 'password', 'role']\n    write_csv(USER_CSV, user_data, fieldnames)\ndef save_booking_data(booking_data):\n    fieldnames = ['username', 'flight_id', 'date', 'time']\n    write_csv(BOOKINGS_CSV, booking_data, fieldnames)\n# Routes\n# Home Page\n@app.route('/')\ndef home():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "save_booking_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def save_booking_data(booking_data):\n    fieldnames = ['username', 'flight_id', 'date', 'time']\n    write_csv(BOOKINGS_CSV, booking_data, fieldnames)\n# Routes\n# Home Page\n@app.route('/')\ndef home():\n    return render_template('home.html')\n# User Signup\n@app.route('/signup', methods=['GET', 'POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def home():\n    return render_template('home.html')\n# User Signup\n@app.route('/signup', methods=['GET', 'POST'])\ndef signup():\n    if request.method == 'POST':\n        username = request.form['username']\n        password = request.form['password']\n        user_data = {'username': username, 'password': password, 'role': 'user'}\n        save_user_data(user_data)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def signup():\n    if request.method == 'POST':\n        username = request.form['username']\n        password = request.form['password']\n        user_data = {'username': username, 'password': password, 'role': 'user'}\n        save_user_data(user_data)\n        flash('User registered successfully!')\n        return redirect(url_for('login'))\n    return render_template('signup.html')\n# User Login",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form['username']\n        password = request.form['password']\n        users = read_csv(USER_CSV)\n        for user in users:\n            if user['username'] == username and user['password'] == password:\n                session['username'] = username\n                session['role'] = user['role']\n                if user['role'] == 'admin':",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "admin_login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_login():\n    return redirect(url_for('login'))\n# User Logout\n@app.route('/logout')\ndef logout():\n    session.pop('username', None)\n    session.pop('role', None)\n    flash('You have been logged out!')\n    return redirect(url_for('login'))\n# User Booking Page",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def logout():\n    session.pop('username', None)\n    session.pop('role', None)\n    flash('You have been logged out!')\n    return redirect(url_for('login'))\n# User Booking Page\n@app.route('/booking', methods=['GET', 'POST'])\ndef booking():\n    if 'username' in session and session['role'] == 'user':\n        flights = read_csv(FLIGHT_CSV)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "booking",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def booking():\n    if 'username' in session and session['role'] == 'user':\n        flights = read_csv(FLIGHT_CSV)\n        if request.method == 'POST':\n            flight_id = request.form['flight_id']\n            for flight in flights:\n                if flight['flight_id'] == flight_id and int(flight['seats']) > 0:\n                    flight['seats'] = str(int(flight['seats']) - 1)\n                    save_flight_data(flight)\n                    booking_data = {",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "my_bookings",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def my_bookings():\n    if 'username' in session and session['role'] == 'user':\n        bookings = read_csv(BOOKINGS_CSV)\n        user_bookings = [booking for booking in bookings if booking['username'] == session['username']]\n        return render_template('my_bookings.html', bookings=user_bookings)\n    flash('Please log in first!')\n    return redirect(url_for('login'))\n# Admin Dashboard\n@app.route('/admin_dashboard')\ndef admin_dashboard():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "admin_dashboard",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_dashboard():\n    if 'username' in session and session['role'] == 'admin':\n        flights = read_csv(FLIGHT_CSV)\n        return render_template('admin.html', flights=flights)\n    flash('Admin login required!')\n    return redirect(url_for('admin_login'))\n# Add Flight\n@app.route('/add_flight', methods=['POST'])\ndef add_flight():\n    if 'username' in session and session['role'] == 'admin':",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_flight",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_flight():\n    if 'username' in session and session['role'] == 'admin':\n        flight_data = {\n            'flight_id': request.form['flight_id'],\n            'origin': request.form['origin'],\n            'destination': request.form['destination'],\n            'date': request.form['date'],\n            'time': request.form['time'],\n            'seats': '60'  # Default seat count is 60\n        }",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "remove_flight",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def remove_flight(flight_id):\n    if 'username' in session and session['role'] == 'admin':\n        flights = read_csv(FLIGHT_CSV)\n        updated_flights = [flight for flight in flights if flight['flight_id'] != flight_id]\n        with open(FLIGHT_CSV, 'w', newline='') as file:\n            fieldnames = ['flight_id', 'origin', 'destination', 'date', 'time', 'seats']\n            writer = csv.DictWriter(file, fieldnames=fieldnames)\n            writer.writeheader()\n            writer.writerows(updated_flights)\n        flash('Flight removed successfully!')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "view_bookings",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def view_bookings(flight_id):\n    if 'username' in session and session['role'] == 'admin':\n        bookings = read_csv(BOOKINGS_CSV)\n        flight_bookings = [booking for booking in bookings if booking['flight_id'] == flight_id]\n        return render_template('view_bookings.html', bookings=flight_bookings)\n    flash('Admin login required!')\n    return redirect(url_for('admin_login'))\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_secret_key'\n# CSV file paths\nUSER_CSV = 'data/users.csv'\nFLIGHT_CSV = 'data/flights.csv'\nBOOKINGS_CSV = 'data/bookings.csv'\n# Helper Functions\ndef read_csv(file_path):\n    with open(file_path, 'r') as file:\n        return list(csv.DictReader(file))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.secret_key",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.secret_key = 'your_secret_key'\n# CSV file paths\nUSER_CSV = 'data/users.csv'\nFLIGHT_CSV = 'data/flights.csv'\nBOOKINGS_CSV = 'data/bookings.csv'\n# Helper Functions\ndef read_csv(file_path):\n    with open(file_path, 'r') as file:\n        return list(csv.DictReader(file))\ndef write_csv(file_path, data, fieldnames):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "USER_CSV",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "USER_CSV = 'data/users.csv'\nFLIGHT_CSV = 'data/flights.csv'\nBOOKINGS_CSV = 'data/bookings.csv'\n# Helper Functions\ndef read_csv(file_path):\n    with open(file_path, 'r') as file:\n        return list(csv.DictReader(file))\ndef write_csv(file_path, data, fieldnames):\n    with open(file_path, 'a', newline='') as file:\n        writer = csv.DictWriter(file, fieldnames=fieldnames)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "FLIGHT_CSV",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "FLIGHT_CSV = 'data/flights.csv'\nBOOKINGS_CSV = 'data/bookings.csv'\n# Helper Functions\ndef read_csv(file_path):\n    with open(file_path, 'r') as file:\n        return list(csv.DictReader(file))\ndef write_csv(file_path, data, fieldnames):\n    with open(file_path, 'a', newline='') as file:\n        writer = csv.DictWriter(file, fieldnames=fieldnames)\n        writer.writerow(data)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "BOOKINGS_CSV",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "BOOKINGS_CSV = 'data/bookings.csv'\n# Helper Functions\ndef read_csv(file_path):\n    with open(file_path, 'r') as file:\n        return list(csv.DictReader(file))\ndef write_csv(file_path, data, fieldnames):\n    with open(file_path, 'a', newline='') as file:\n        writer = csv.DictWriter(file, fieldnames=fieldnames)\n        writer.writerow(data)\ndef save_flight_data(flight_data):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def load_data(data_type):\n    data = []\n    with open(DATABASE_FILE, newline='') as csvfile:\n        reader = csv.DictReader(csvfile)\n        for row in reader:\n            if row['Type'] == data_type:\n                data.append(row)\n    return data\n# Helper function to save specific data types to the database\ndef save_data(data_type, data, fieldnames):",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "save_data",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def save_data(data_type, data, fieldnames):\n    all_data = []\n    try:\n        with open(DATABASE_FILE, newline='') as csvfile:\n            reader = csv.DictReader(csvfile)\n            all_data = list(reader)\n    except FileNotFoundError:\n        pass\n    # Remove existing entries of the same data type\n    all_data = [row for row in all_data if row['Type'] != data_type]",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def signup():\n    username = input(\"Choose a username: \")\n    password = getpass.getpass(\"Choose a password: \")\n    users = load_data('user')\n    for user in users:\n        if user['Username'] == username:\n            print(\"Username already exists. Please choose a different one.\")\n            return\n    users.append({'Username': username, 'Password': password})\n    save_data('user', users, ['Username', 'Password'])",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "user_login",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def user_login():\n    username = input(\"Enter username: \")\n    password = getpass.getpass(\"Enter password: \")\n    users = load_data('user')\n    for user in users:\n        if user['Username'] == username and user['Password'] == password:\n            print(f\"Welcome {username}!\")\n            user_menu(username)\n            return\n    print(\"Invalid credentials.\")",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "admin_login",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def admin_login():\n    username = input(\"Enter admin username: \")\n    password = getpass.getpass(\"Enter admin password: \")\n    # Simple hardcoded admin credentials\n    if username == 'admin' and password == 'admin':\n        print(f\"Welcome Admin!\")\n        admin_menu()\n    else:\n        print(\"Invalid credentials.\")\n# Flight Management (Admin)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "add_flight",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def add_flight():\n    flight_number = input(\"Enter flight number: \")\n    origin = input(\"Enter flight origin: \")\n    destination = input(\"Enter flight destination: \")\n    date = input(\"Enter flight date (YYYY-MM-DD): \")\n    time = input(\"Enter flight time (HH:MM): \")\n    flights = load_data('flight')\n    flights.append({\n        'Flight Number': flight_number,\n        'Origin': origin,",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "remove_flight",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def remove_flight():\n    flight_number = input(\"Enter the flight number to remove: \")\n    flights = load_data('flight')\n    flights = [flight for flight in flights if flight['Flight Number'] != flight_number]\n    save_data('flight', flights, ['Flight Number', 'Origin', 'Destination', 'Date', 'Time', 'Seats Available'])\n    print(f\"Flight {flight_number} removed successfully.\")\ndef view_bookings():\n    flight_number = input(\"Enter flight number to view bookings: \")\n    bookings = load_data('booking')\n    print(f\"\\nBookings for Flight {flight_number}:\")",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "view_bookings",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def view_bookings():\n    flight_number = input(\"Enter flight number to view bookings: \")\n    bookings = load_data('booking')\n    print(f\"\\nBookings for Flight {flight_number}:\")\n    for booking in bookings:\n        if booking['Flight Number'] == flight_number:\n            print(f\"User: {booking['Username']} | Seats Booked: {booking['Seats']}\")\n# User Actions\ndef search_flights():\n    date = input(\"Enter flight date (YYYY-MM-DD): \")",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "search_flights",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def search_flights():\n    date = input(\"Enter flight date (YYYY-MM-DD): \")\n    time = input(\"Enter flight time (HH:MM): \")\n    flights = load_data('flight')\n    matching_flights = [flight for flight in flights if flight['Date'] == date and flight['Time'] == time]\n    if matching_flights:\n        print(\"\\nMatching Flights:\")\n        for flight in matching_flights:\n            print(f\"Flight {flight['Flight Number']} from {flight['Origin']} to {flight['Destination']} at {flight['Time']} with {flight['Seats Available']} seats available.\")\n    else:",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "book_flight",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def book_flight(username):\n    search_flights()\n    flight_number = input(\"Enter flight number to book: \")\n    seats = int(input(\"Enter number of seats to book: \"))\n    flights = load_data('flight')\n    for flight in flights:\n        if flight['Flight Number'] == flight_number:\n            available_seats = int(flight['Seats Available'])\n            if available_seats >= seats:\n                flight['Seats Available'] = str(available_seats - seats)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "my_bookings",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def my_bookings(username):\n    bookings = load_data('booking')\n    print(f\"\\n{username}'s Bookings:\")\n    for booking in bookings:\n        if booking['Username'] == username:\n            print(f\"Flight: {booking['Flight Number']} | Seats: {booking['Seats']}\")\n# Menus\ndef user_menu(username):\n    while True:\n        print(\"\\nUser Menu:\")",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "user_menu",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def user_menu(username):\n    while True:\n        print(\"\\nUser Menu:\")\n        print(\"1. Search Flights\")\n        print(\"2. Book Flight\")\n        print(\"3. My Bookings\")\n        print(\"4. Logout\")\n        choice = input(\"Choose an option: \")\n        if choice == '1':\n            search_flights()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "admin_menu",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def admin_menu():\n    while True:\n        print(\"\\nAdmin Menu:\")\n        print(\"1. Add Flight\")\n        print(\"2. Remove Flight\")\n        print(\"3. View Bookings by Flight Number\")\n        print(\"4. Logout\")\n        choice = input(\"Choose an option: \")\n        if choice == '1':\n            add_flight()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def main():\n    # Initialize the database CSV if not present\n    try:\n        with open(DATABASE_FILE, 'r') as file:\n            pass\n    except FileNotFoundError:\n        with open(DATABASE_FILE, 'w', newline='') as csvfile:\n            fieldnames = ['Type', 'Username', 'Password', 'Flight Number', 'Origin', 'Destination', 'Date', 'Time', 'Seats', 'Seats Available']\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_FILE",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "DATABASE_FILE = 'database.csv'\n# Helper function to load specific data types from the database\ndef load_data(data_type):\n    data = []\n    with open(DATABASE_FILE, newline='') as csvfile:\n        reader = csv.DictReader(csvfile)\n        for row in reader:\n            if row['Type'] == data_type:\n                data.append(row)\n    return data",
+        "detail": "test",
+        "documentation": {}
+    }
+]
